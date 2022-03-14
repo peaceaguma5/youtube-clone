@@ -91,7 +91,7 @@ export const micIcon = (
   </svg>
 );
 
-export const videoIcon = (
+export const videoIcon1 = (
   <svg
     width="24"
     height="24"
@@ -106,7 +106,21 @@ export const videoIcon = (
   </svg>
 );
 
-export const appsIcon = (
+export const videoIcon2 = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M18 8.83V5H2V19H18V13.17L22 15V7L18 8.83ZM14 13H11V16H9V13H6V11H9V8H11V11H14V13Z"
+      fill="black"
+    />
+  </svg>
+);
+export const appsIcon1 = (
   <svg
     width="24"
     height="24"
@@ -121,7 +135,21 @@ export const appsIcon = (
   </svg>
 );
 
-export const notificationIcon = (
+export const appsIcon2 = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16 4V8H20V4H16ZM16 10V14H20V10H16ZM10 4V8H14V4H10ZM10 10V14H14V10H10ZM16 16V20H20V16H16ZM10 16V20H14V16H10ZM4 4V8H8V4H4ZM4 10V14H8V10H4ZM4 16V20H8V16H4Z"
+      fill="black"
+    />
+  </svg>
+);
+export const notificationIcon1 = (
   <svg
     width="24"
     height="24"
@@ -131,6 +159,20 @@ export const notificationIcon = (
   >
     <path
       d="M10 20.0009H14C14 21.1009 13.1 22.0009 12 22.0009C10.9 22.0009 10 21.1009 10 20.0009ZM20 17.3509V19.0009H4V17.3509L6 15.4709V10.3209C6 7.40089 7.56 5.10089 10 4.34089V3.96089C10 2.54089 11.49 1.46089 12.99 2.20089C13.64 2.52089 14 3.23089 14 3.96089V4.35089C16.44 5.10089 18 7.41089 18 10.3309V15.4809L20 17.3509ZM19 17.7709L17 15.8909V10.4209C17 7.95089 15.81 6.06089 13.87 5.32089C12.61 4.79089 11.23 4.82089 10.03 5.35089C8.15 6.11089 7 7.99089 7 10.4209V15.8909L5 17.7709V18.0009H19V17.7709Z"
+      fill="black"
+    />
+  </svg>
+);
+export const notificationIcon2 = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 20.0009H14C14 21.1009 13.1 22.0009 12 22.0009C10.9 22.0009 10 21.1009 10 20.0009ZM20 17.3509V19.0009H4V17.3509L6 15.4709V10.3209C6 7.40089 7.56 5.10089 10 4.34089V3.96089C10 2.54089 11.49 1.46089 12.99 2.20089C13.64 2.52089 14 3.23089 14 3.96089V4.35089C16.44 5.10089 18 7.41089 18 10.3309V15.4809L20 17.3509Z"
       fill="black"
     />
   </svg>
@@ -150,6 +192,20 @@ export const exploreIcon = (
     />
   </svg>
 );
+export const profile = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 3C16.96 3 21 7.04 21 12C21 13.42 20.66 14.76 20.07 15.96C18.54 14.24 16.09 13.07 12.69 12.93C14.57 12.6 16 10.97 16 9C16 6.79 14.21 5 12 5C9.79 5 8 6.79 8 9C8 10.97 9.43 12.6 11.31 12.93C7.91 13.07 5.46 14.24 3.93 15.96C3.34 14.76 3 13.42 3 12C3 7.04 7.04 3 12 3ZM9 9C9 7.35 10.35 6 12 6C13.65 6 15 7.35 15 9C15 10.65 13.65 12 12 12C10.35 12 9 10.65 9 9ZM12 21C8.84 21 6.06 19.36 4.45 16.88C6.01 14.93 8.61 13.9 12 13.9C15.39 13.9 17.99 14.93 19.55 16.88C17.94 19.36 15.16 21 12 21Z"
+      fill="#065FD4"
+    />
+  </svg>
+);
 
 export const homeIcon = (
   <svg
@@ -159,10 +215,7 @@ export const homeIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="M12 4.33L19 10.45V20H15V14H9V20H5V10.45L12 4.33V4.33ZM12 3L4 10V21H10V15H14V21H20V10L12 3Z"
-      fill="black"
-    />
+    <path d="M4 10V21H10V15H14V21H20V10L12 3L4 10Z" fill="black" />
   </svg>
 );
 export const shortsIcon = (
