@@ -1,45 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import PostCard from "../components/PostCard";
 import SideBar from "../components/SideBar";
 import Skeleton from "../components/Skeleton";
 import { GlobalStyle } from "../components/styles/GlobalStyle.styles";
 import {
+  EmptyContainerStyle,
   HomeContainerFlex,
   HomeMain,
 } from "../components/styles/StyleContainer.styles";
 import { useSideBarStore } from "../helper/stores";
 import { useFetchData } from "../helper/stores";
+import { cardType } from "../helper/Typeface";
+import { useInView } from "react-intersection-observer";
+import Spinner from "../components/Spinner";
+import { myData } from "../helper/data";
 
-interface cardType {
-  etag: string;
-  kind: string;
-  additionalProperties: { [prop: string]: string };
-}
 const Home: React.FC = () => {
+  const { ref, inView } = useInView();
   const sideBarState = useSideBarStore(({ isActive }) => isActive);
   const {
     data,
-    error,
+    isError,
+    isLoading,
     fetchNextPage,
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-    status,
   } = useFetchData();
-  // console.log(data?.pages, "......data");
-  console.log(status, "......status");
-  const cardList = data?.pages.map((group, i) => (
-    <React.Fragment key={i}>
-      {group.items.map(
-        (card: object) => (
-          <PostCard card={card} key={`${card}`} />
-        )
-        //
-        // <p key={project.id}>{project.name}</p>
-      )}
-    </React.Fragment>
+
+  // const cardList =
+  //   data &&
+  //   data.pages.map((group) => (
+  //     <React.Fragment key={group.nextPageToken ?? "lastPage"}>
+  //       {group.items.map((card: cardType) => (
+  //         <PostCard key={card.id.videoId} card={card} />
+  //       ))}
+  //     </React.Fragment>
+  //   ));
+
+  const cardList = myData.map((card: cardType) => (
+    <PostCard key={card.id.videoId} card={card} />
   ));
+  // useEffect(() => {
+  //   // fetch new page
+  //   if (inView && hasNextPage) {
+  //     fetchNextPage();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [inView]);
+
   return (
     <GlobalStyle>
       <Navbar />
@@ -51,38 +61,38 @@ const Home: React.FC = () => {
             height: "100%",
             width: "100%",
             maxHeight: "100vh",
-            border: "1px solid",
             overflowY: "scroll",
           }}
         >
           <HomeMain className={sideBarState ? "collapse" : ""}>
-            {status === "loading" ? (
+            {cardList}
+            {/* {isLoading ? (
               <Skeleton />
-            ) : status === "error" ? (
+            ) : isError ? (
               <p style={{ textAlign: "center", color: "red", fontSize: 16 }}>
-                An error occoured while fetching data
+                An error occurred while fetching your data
               </p>
             ) : (
               <>
                 {cardList}
-                <div>
-                  <button
-                    onClick={() => fetchNextPage()}
-                    disabled={!hasNextPage || isFetchingNextPage}
-                  >
-                    {isFetchingNextPage
-                      ? "Loading more..."
-                      : hasNextPage
-                      ? "Load More"
-                      : "Nothing more to load"}
-                  </button>
-                </div>
-                <div>
-                  {isFetching && !isFetchingNextPage ? "Fetching..." : null}
-                </div>
+                <EmptyContainerStyle
+                  style={{ gridColumn: "1 / -1", textAlign: "center" }}
+                >
+                  {isFetchingNextPage ? (
+                    <Spinner />
+                  ) : hasNextPage ? (
+                    ""
+                  ) : (
+                    "Nothing more to load"
+                  )}
+                </EmptyContainerStyle>
+                {isFetching && !isFetchingNextPage ? <Skeleton /> : null}
               </>
-            )}
+            )} */}
           </HomeMain>
+          <EmptyContainerStyle ref={ref} style={{ visibility: "hidden" }}>
+            Intersetion observer marker
+          </EmptyContainerStyle>
         </div>
       </HomeContainerFlex>
     </GlobalStyle>

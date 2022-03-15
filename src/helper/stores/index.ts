@@ -12,26 +12,13 @@ export const useSideBarStore = create<sideBar>((set) => ({
 }));
 
 export const useFetchData = () => {
-  const fetchVideos = async ({ pageParam = 1 }) => {
-    const res = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=${
-        pageParam * 50
-      }&q=programming&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+  const fetchVideos = async ({ pageParam = "" }) => {
+    const res = await axios.get(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=50&pageToken=${pageParam}&q=programming&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
     );
-    return res.json();
+    return res.data;
   };
-  // const {
-  //   data,
-  //   error,
-  //   fetchNextPage,
-  //   hasNextPage,
-  //   isFetching,
-  //   isFetchingNextPage,
-  //   status,
-  // } = useInfiniteQuery("videoPosts", fetchVideos, {
-  //   getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
-  // });
   return useInfiniteQuery("videoPosts", fetchVideos, {
-    getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
+    getNextPageParam: ({ nextPageToken }) => nextPageToken ?? false,
   });
 };

@@ -12,8 +12,6 @@ export const HomeMain = styled.main`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   row-gap: 40px;
   column-gap: 16px;
-  align-items: flex-end;
-  border: 1px solid red;
   flex-grow: 1;
   margin: 24px 16px;
 
@@ -310,7 +308,96 @@ export const SpinnerStyle = styled.div`
     }
   }
 `;
+export const BtnStyle = styled.button`
+  border: none;
+  background-color: #efefef;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 6px;
+`;
+export const HoverStyle = styled.div`
+  transition: all 0.3s;
+  animation-name: reverseScale;
+  animation-duration: 0.4s;
+  .card-body {
+    padding: 0;
+    transition-duration: 0.4s;
+    transition-property: padding;
+  }
+  .footer {
+    opacity: 0;
+    transition-duration: 0.4s;
+    transition-property: opacity, margin-bottom;
+    margin-bottom: -30px;
+  }
 
+  &.hovered {
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    animation-name: scale;
+    animation-timing-function: ease-in-out;
+    background-color: white;
+    .footer {
+      opacity: 1;
+      transition-delay: 1s;
+      transition-duration: 0.4s;
+      transition-property: opacity, margin-bottom;
+      margin-bottom: 0px;
+    }
+    .card-body {
+      padding: 0 12px;
+      transition-delay: 1s;
+      transition-duration: 0.4s;
+      transition-property: padding;
+    }
+  }
+  @keyframes scale {
+    from {
+      z-index: auto;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      box-shadow: none;
+      position: absolute;
+    }
+    to {
+      z-index: 1000;
+      height: calc(100% + 60px);
+      width: calc(100% + 60px);
+      top: -15px;
+      left: -30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      position: absolute;
+    }
+  }
+  @keyframes reverseScale {
+    from {
+      z-index: 1000;
+      height: calc(100% + 60px);
+      width: calc(100% + 60px);
+      top: -15px;
+      left: -30px;
+      position: absolute;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    to {
+      z-index: auto;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      box-shadow: none;
+    }
+  }
+`;
 export const ImageStyle = styled.img`
   max-width: 100%;
   height: auto;
@@ -339,14 +426,17 @@ export const ItemFlexStyle = styled.div<{ rowGap: string; columnGap: string }>`
   column-gap: ${({ columnGap }) => columnGap};
 `;
 
-export const SkeletonStyle = styled.section`
-  display: -ms-grid;
-  display: -moz-grid;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  row-gap: 40px;
-  column-gap: 16px;
-`;
+// export const SkeletonStyle = styled.section`
+//   display: -ms-grid;
+//   display: -moz-grid;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//   row-gap: 40px;
+//   column-gap: 16px;
+//   @media screen and (min-width: 1634px) {
+//     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+//   }
+// `;
 
 export const SkeletonCardStyle = styled.div`
   display: grid;

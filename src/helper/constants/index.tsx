@@ -206,6 +206,35 @@ export const profile = (
     />
   </svg>
 );
+export const timeIcon = (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11.2275 12.7125L7.5 10.4025V5.25H9V9.57L12.0225 11.4375L11.2275 12.7125ZM9 2.25C5.28 2.25 2.25 5.28 2.25 9C2.25 12.72 5.28 15.75 9 15.75C12.72 15.75 15.75 12.72 15.75 9C15.75 5.28 12.72 2.25 9 2.25ZM9 1.5C13.14 1.5 16.5 4.86 16.5 9C16.5 13.14 13.14 16.5 9 16.5C4.86 16.5 1.5 13.14 1.5 9C1.5 4.86 4.86 1.5 9 1.5Z"
+      fill="#606060"
+    />
+  </svg>
+);
+
+export const queueIcon = (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16.5 5.25H1.5V6H16.5V5.25ZM9.75 9H1.5V8.25H9.75V9ZM9.75 12H1.5V11.25H9.75V12ZM11.25 14.25V8.25L16.5 11.25L11.25 14.25Z"
+      fill="#606060"
+    />
+  </svg>
+);
 
 export const homeIcon = (
   <svg
