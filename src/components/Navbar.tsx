@@ -69,7 +69,13 @@ const Navbar = () => {
             {btnActive === "notif" ? notificationIcon2 : notificationIcon1}
           </ButtonStyle>
         </EmptyContainerStyle>
-        <ProfileImg src={img} alt="Profile image" />
+        <ProfileImg
+          src={img}
+          alt="Profile image"
+          imgHeight="32px"
+          imgWidth="32px"
+          style={{ marginRight: "8px" }}
+        />
       </ItemFlexStyle>
     </NavFlexStyle>
   );

@@ -5,6 +5,30 @@ export const HomeContainerFlex = styled.div`
   display: flex;
 `;
 
+export const HomeMain = styled.main`
+  display: -ms-grid;
+  display: -moz-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  row-gap: 40px;
+  column-gap: 16px;
+  align-items: flex-end;
+  border: 1px solid red;
+  flex-grow: 1;
+  margin: 24px 16px;
+
+  @media screen and (min-width: 1634px) {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    &.collapse {
+      /* max-width: 85%;
+      margin: auto; */
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(283px, 359px));
+    }
+  }
+`;
+
 export const SidebarStyle = styled.aside`
   flex-grow: 1;
   max-width: 240px;
@@ -15,6 +39,10 @@ export const SidebarStyle = styled.aside`
     &.collapse {
       max-width: 70px;
       flex-basis: 70px;
+      main {
+        max-width: 90%;
+        margin: auto;
+      }
       nav {
         ul li a {
           padding-left: 0;
@@ -111,10 +139,10 @@ export const SidebarListContainer = styled.ul`
 `;
 
 export const TextH3 = styled.h3`
-  font-size: 1.6rem;
-  /* font-size: 1.6em; */
-  line-height: 2.2rem;
-  font-weight: 500;
+  margin: 12px 0 4px 0;
+  font-size: 15px;
+  line-height: 22px;
+  padding: 0;
   max-height: 4.4rem;
   overflow: hidden;
   display: block;
@@ -127,19 +155,29 @@ export const TextH3 = styled.h3`
   color: #030303;
 `;
 
-export const ProfileImg = styled.img`
-  width: 32px;
-  height: 32px;
+export const ProfileImg = styled.img<{ imgWidth: string; imgHeight: string }>`
+  width: ${({ imgWidth }) => imgWidth};
+  height: ${({ imgHeight }) => imgHeight};
   object-fit: cover;
   border-radius: 50%;
-  margin-right: 8px;
 `;
 
 export const TextSpan = styled.span`
-  font-size: 1.4rem;
-  line-height: 2rem;
-  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
   color: #606060;
+  &.view {
+    position: relative;
+    padding-right: 14px;
+    display: inline-block;
+    &:after {
+      position: absolute;
+      content: "•";
+      right: 2px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 `;
 
 export const ButtonStyle = styled.button`
@@ -154,7 +192,11 @@ export const ButtonStyle = styled.button`
   position: relative;
 `;
 
-export const LinkStyle = styled.a``;
+export const LinkStyle = styled.a`
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+`;
 
 export const SearchDivStyle = styled.div`
   flex-grow: 1;
@@ -269,6 +311,13 @@ export const SpinnerStyle = styled.div`
   }
 `;
 
+export const ImageStyle = styled.img`
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+`;
+
 export const NavFlexStyle = styled.nav`
   display: -webkit-flex;
   display: flex;
@@ -277,6 +326,10 @@ export const NavFlexStyle = styled.nav`
   background-color: white;
   height: 56px;
   padding: 0 24px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
 `;
 
 export const ItemFlexStyle = styled.div<{ rowGap: string; columnGap: string }>`

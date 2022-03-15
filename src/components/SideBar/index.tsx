@@ -19,9 +19,8 @@ import yGame from "../../assets/images/yGame.jpeg";
 import yNews from "../../assets/images/yNews.jpeg";
 import yLive from "../../assets/images/yLive.jpeg";
 import y360 from "../../assets/images/y360.jpeg";
-import { useSideBarStore } from "../../helper/stores";
 
-const SideBar = () => {
+const SideBar = ({ sideBarState }: { sideBarState: boolean }) => {
   const sideList = [
     { id: 1, name: "Home", icon: homeIcon, type: "svg" },
     { id: 2, name: "Explore", icon: exploreIcon, type: "svg" },
@@ -36,7 +35,7 @@ const SideBar = () => {
     { id: 11, name: "360 Video", icon: y360, type: "img" },
   ];
 
-  const sideBarState = useSideBarStore(({ isActive }) => isActive);
+  //   const sideBarState = useSideBarStore(({ isActive }) => isActive);
 
   const listItem = sideList.map((val) => {
     if (val.type === "img") {
