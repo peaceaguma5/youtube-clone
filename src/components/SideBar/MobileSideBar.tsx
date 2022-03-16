@@ -51,7 +51,7 @@ const MobileSideBar = ({ sideBarState }: { sideBarState: boolean }) => {
       return (
         <SidebarList key={val.id}>
           <LinkStyle>
-            {val.icon}
+            <EmptyContainerStyle>{val.icon}</EmptyContainerStyle>
             <span>{val.name}</span>
           </LinkStyle>
         </SidebarList>
@@ -77,7 +77,14 @@ const MobileSideBar = ({ sideBarState }: { sideBarState: boolean }) => {
           </EmptyContainerStyle>
           <LinkStyle href="#">{logo}</LinkStyle>
         </ItemFlexStyle>
-        <SidebarListContainer>{listItem}</SidebarListContainer>
+        <SidebarListContainer
+          style={{
+            maxHeight: "90vh",
+            overflowY: "auto",
+          }}
+        >
+          {listItem}
+        </SidebarListContainer>
       </nav>
     </SidebarStyle>
   );

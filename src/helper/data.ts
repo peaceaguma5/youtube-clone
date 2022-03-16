@@ -1783,8 +1783,6 @@ export const myData = [
 ];
 
 export const subNav = [
-  { id: 12, name: "Comedies Comedies" },
-  { id: 13, name: "All Comedies" },
   { id: 1, name: "All" },
   { id: 2, name: "Live" },
   { id: 3, name: "Comedies" },

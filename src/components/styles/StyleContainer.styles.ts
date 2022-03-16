@@ -88,6 +88,7 @@ export const SidebarStyle = styled.aside`
     nav {
       background-color: white;
       height: 100vh;
+
       ul li a {
         flex-wrap: nowrap;
         display: -webkit-flex;
@@ -96,8 +97,6 @@ export const SidebarStyle = styled.aside`
         column-gap: 24px;
         padding: 8px 24px;
         text-align: left;
-        svg {
-        }
       }
     }
     span,
@@ -222,6 +221,16 @@ export const SidebarList = styled.li`
 export const SidebarListContainer = styled.ul`
   list-style-type: none;
   padding: 0;
+  li:last-of-type {
+    margin-bottom: 40px;
+  }
+  overscroll-behavior-inline: contain;
+  align-items: center;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const TextH3 = styled.h3`
@@ -346,6 +355,10 @@ export const SubNavStyle = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 12px;
+  a:first-of-type {
+    background-color: #030303;
+    color: white;
+  }
   div {
     max-width: calc(100% - 0px);
     min-width: 80%;
@@ -464,8 +477,10 @@ export const BtnStyle = styled.button`
   align-items: center;
   column-gap: 12px;
   flex-grow: 1;
+  flex-shrink: 0;
   justify-content: center;
   padding: 6px;
+  flex-basis: 140px;
 `;
 export const HoverStyle = styled.div`
   &.no-hover {
@@ -480,9 +495,12 @@ export const HoverStyle = styled.div`
   }
   .footer {
     opacity: 0;
+    background-color: white;
+    width: calc(100% - 24px);
+    left: 0;
     /* transition-duration: 0.4s;
     transition-property: opacity, margin-bottom; */
-    margin-bottom: -30px;
+    /* margin-bottom: -30px; */
   }
 
   &.hovered {
@@ -554,6 +572,18 @@ export const HoverStyle = styled.div`
       left: 0;
       position: absolute;
       box-shadow: none;
+    }
+  }
+  @media screen and (max-width: 547px) {
+    &.hovered,
+    .card-body {
+      animation: none;
+    }
+    .footer {
+      display: none;
+    }
+    .card-body {
+      padding: 0;
     }
   }
 `;

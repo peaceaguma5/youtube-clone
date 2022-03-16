@@ -40,6 +40,7 @@ const PostCard = ({ card }: { card: cardType }) => {
             ? "no-hover"
             : ""
         }`}
+        style={{ position: "relative" }}
       >
         <div
           style={{ position: "relative" }}
@@ -82,9 +83,9 @@ const PostCard = ({ card }: { card: cardType }) => {
           </EmptyContainerStyle>
         </ItemFlexStyle>
         <ItemFlexStyle
-          rowGap="0"
+          rowGap="12px"
           columnGap="12px"
-          style={{ padding: 12 }}
+          style={{ padding: 12, flexWrap: "wrap", position: "absolute" }}
           className="footer"
         >
           <BtnStyle>{timeIcon} WATCH LATER</BtnStyle>
