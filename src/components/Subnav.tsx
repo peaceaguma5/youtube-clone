@@ -14,11 +14,7 @@ const Subnav: React.FC = () => {
   ));
   return (
     <SubNavStyle style={{ display: "grid" }}>
-      <ItemFlexStyle
-        rowGap="0"
-        columnGap="12px"
-        style={{ border: "1px solid red" }}
-      >
+      <ItemFlexStyle rowGap="0" columnGap="12px">
         {subLinks}
       </ItemFlexStyle>
     </SubNavStyle>

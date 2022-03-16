@@ -5,8 +5,9 @@ import {
   logo,
   menuIcon,
   micIcon,
-  notificationIcon1,
-  notificationIcon2,
+  moreIcon,
+  mProfile,
+  profile,
   searchIcon,
   videoIcon1,
   videoIcon2,
@@ -19,9 +20,8 @@ import {
   InputStyle,
   EmptyContainerStyle,
   SearchDivStyle,
-  ProfileImg,
+  NavBtnStyle,
 } from "./styles/StyleContainer.styles";
-import img from "../assets/images/cosmas.jpeg";
 import { useSideBarStore } from "../helper/stores";
 
 const Navbar = () => {
@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <NavFlexStyle>
       <ItemFlexStyle columnGap="16px" rowGap="0" style={alignCenter}>
-        <EmptyContainerStyle>
+        <EmptyContainerStyle className="hide-mobile">
           <ButtonStyle onClick={sideBarToggle}>{menuIcon}</ButtonStyle>
         </EmptyContainerStyle>
         <LinkStyle href="#">{logo}</LinkStyle>
@@ -65,20 +65,18 @@ const Navbar = () => {
           </ButtonStyle>
         </EmptyContainerStyle>
         <EmptyContainerStyle className="hide-mobile">
-          <ButtonStyle onClick={() => btnToggle("notif")}>
-            {btnActive === "notif" ? notificationIcon2 : notificationIcon1}
+          <ButtonStyle onClick={() => btnToggle("more")}>
+            {btnActive === "more" ? moreIcon : moreIcon}
           </ButtonStyle>
         </EmptyContainerStyle>
         <EmptyContainerStyle className="mobile">
           <ButtonStyle>{searchIcon}</ButtonStyle>
         </EmptyContainerStyle>
-        <ProfileImg
-          src={img}
-          alt="Profile image"
-          imgHeight="32px"
-          imgWidth="32px"
-          style={{ marginRight: "8px" }}
-        />
+        <EmptyContainerStyle className="mobile">
+          <ButtonStyle>{mProfile}</ButtonStyle>
+        </EmptyContainerStyle>
+
+        <NavBtnStyle className="hide-mobile">{profile}SIGN UP</NavBtnStyle>
       </ItemFlexStyle>
     </NavFlexStyle>
   );

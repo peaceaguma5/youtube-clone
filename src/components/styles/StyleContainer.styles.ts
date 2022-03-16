@@ -87,7 +87,7 @@ export const SidebarStyle = styled.aside`
 
     nav {
       background-color: white;
-
+      height: 100vh;
       ul li a {
         flex-wrap: nowrap;
         display: -webkit-flex;
@@ -322,6 +322,24 @@ export const SearchDivStyle = styled.div`
   }
   @media screen and (max-width: 651px) {
     display: none;
+  }
+`;
+export const NavBtnStyle = styled.button`
+  background-color: white;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  border: 1px solid #065fd4;
+  color: #065fd4;
+  height: 36px;
+  padding: 0 6px;
+  flex-shrink: 0;
+  cursor: pointer;
+  @media screen and (max-width: 600px) {
+    &.hide-mobile {
+      display: none;
+    }
   }
 `;
 export const SubNavStyle = styled.div`
@@ -559,6 +577,9 @@ export const NavFlexStyle = styled.nav`
   position: sticky;
   top: 0;
   z-index: 2000;
+  @media screen and (max-width: 600px) {
+    box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
+  }
 `;
 
 export const ItemFlexStyle = styled.div<{ rowGap: string; columnGap: string }>`
