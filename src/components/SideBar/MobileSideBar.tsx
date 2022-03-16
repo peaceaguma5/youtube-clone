@@ -1,14 +1,22 @@
 import React from "react";
-import { profile } from "../../helper/constants";
+import { logo, menuIcon, profile } from "../../helper/constants";
 import {
+  ButtonStyle,
+  EmptyContainerStyle,
+  ItemFlexStyle,
   LinkStyle,
   SidebarList,
   SidebarListContainer,
   SidebarStyle,
 } from "../styles/StyleContainer.styles";
+
+import { useSideBarStore } from "../../helper/stores";
 import { sideList } from "../../helper/data";
 
-const SideBar = ({ sideBarState }: { sideBarState: boolean }) => {
+const MobileSideBar = ({ sideBarState }: { sideBarState: boolean }) => {
+  // toggle sidebar state
+  const sideBarToggle = useSideBarStore(({ sideBarAction }) => sideBarAction);
+
   //   const sideBarState = useSideBarStore(({ isActive }) => isActive);
 
   const listItem = sideList.map((val) => {
@@ -51,12 +59,28 @@ const SideBar = ({ sideBarState }: { sideBarState: boolean }) => {
     }
   });
   return (
-    <SidebarStyle className={sideBarState ? "collapse" : ""}>
+    <SidebarStyle
+      className={
+        sideBarState
+          ? " mobile-sidebar mobile-sidebar--active"
+          : "mobile-sidebar"
+      }
+    >
       <nav>
+        <ItemFlexStyle
+          columnGap="16px"
+          rowGap="0"
+          style={{ alignItems: "center", paddingTop: 10, paddingLeft: 24 }}
+        >
+          <EmptyContainerStyle>
+            <ButtonStyle onClick={sideBarToggle}>{menuIcon}</ButtonStyle>
+          </EmptyContainerStyle>
+          <LinkStyle href="#">{logo}</LinkStyle>
+        </ItemFlexStyle>
         <SidebarListContainer>{listItem}</SidebarListContainer>
       </nav>
     </SidebarStyle>
   );
 };
 
-export default SideBar;
+export default MobileSideBar;

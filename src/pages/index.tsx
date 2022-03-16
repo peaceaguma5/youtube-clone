@@ -8,6 +8,8 @@ import {
   EmptyContainerStyle,
   HomeContainerFlex,
   HomeMain,
+  ItemFlexStyle,
+  LinkStyle,
 } from "../components/styles/StyleContainer.styles";
 import { useSideBarStore } from "../helper/stores";
 import { useFetchData } from "../helper/stores";
@@ -15,6 +17,8 @@ import { cardType } from "../helper/Typeface";
 import { useInView } from "react-intersection-observer";
 import Spinner from "../components/Spinner";
 import { myData } from "../helper/data";
+import Subnav from "../components/Subnav";
+import MobileSideBar from "../components/SideBar/MobileSideBar";
 
 const Home: React.FC = () => {
   const { ref, inView } = useInView();
@@ -54,19 +58,29 @@ const Home: React.FC = () => {
     <GlobalStyle>
       <Navbar />
       <HomeContainerFlex>
-        <SideBar sideBarState={sideBarState} />
-        <div
+        <>
+          <SideBar sideBarState={sideBarState} />
+          <MobileSideBar sideBarState={sideBarState} />
+        </>
+        <EmptyContainerStyle
           style={{
-            minHeight: "90vh",
-            height: "100%",
-            width: "100%",
-            maxHeight: "100vh",
-            overflowY: "scroll",
+            flexGrow: "1",
           }}
         >
-          <HomeMain className={sideBarState ? "collapse" : ""}>
-            {cardList}
-            {/* {isLoading ? (
+          {/* sub nav  */}
+          <Subnav />
+          <div
+            style={{
+              minHeight: "90vh",
+              height: "100%",
+              width: "100%",
+              maxHeight: "100vh",
+              overflowY: "scroll",
+            }}
+          >
+            <HomeMain className={sideBarState ? "collapse" : ""}>
+              {cardList}
+              {/* {isLoading ? (
               <Skeleton />
             ) : isError ? (
               <p style={{ textAlign: "center", color: "red", fontSize: 16 }}>
@@ -89,11 +103,12 @@ const Home: React.FC = () => {
                 {isFetching && !isFetchingNextPage ? <Skeleton /> : null}
               </>
             )} */}
-          </HomeMain>
-          <EmptyContainerStyle ref={ref} style={{ visibility: "hidden" }}>
-            Intersetion observer marker
-          </EmptyContainerStyle>
-        </div>
+            </HomeMain>
+            <EmptyContainerStyle ref={ref} style={{ visibility: "hidden" }}>
+              Intersetion observer marker
+            </EmptyContainerStyle>
+          </div>
+        </EmptyContainerStyle>
       </HomeContainerFlex>
     </GlobalStyle>
   );

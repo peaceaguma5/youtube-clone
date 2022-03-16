@@ -19,8 +19,6 @@ export const HomeMain = styled.main`
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
     &.collapse {
-      /* max-width: 85%;
-      margin: auto; */
       justify-content: center;
       grid-template-columns: repeat(auto-fit, minmax(283px, 359px));
     }
@@ -62,6 +60,96 @@ export const SidebarStyle = styled.aside`
         display: none;
       }
     }
+  }
+  &.mobile-sidebar {
+    display: none;
+    z-index: 2020;
+    position: fixed;
+    min-width: 240px;
+    max-width: 240px;
+    min-height: 100vh;
+    /* overflow-y: auto; */
+    background-color: white;
+    top: 0;
+    left: 0;
+    margin: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    &:after {
+      position: fixed;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    nav {
+      background-color: white;
+
+      ul li a {
+        flex-wrap: nowrap;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        column-gap: 24px;
+        padding: 8px 24px;
+        text-align: left;
+        svg {
+        }
+      }
+    }
+    span,
+    h3,
+    p {
+      font-size: 14px !important;
+      line-height: 18px !important;
+      font-weight: 400 !important;
+    }
+    h3,
+    p {
+      padding-left: 24px !important;
+    }
+
+    ul li.icon,
+    ul li a span {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 1312px) {
+    &.mobile-sidebar--active {
+      display: block;
+    }
+    max-width: 70px;
+    flex-basis: 70px;
+    main {
+      max-width: 90%;
+      margin: auto;
+    }
+    nav {
+      ul li a {
+        padding-left: 0;
+        padding-right: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        svg,
+        span {
+          flex-grow: 1;
+          display: block;
+          font-size: 10px;
+          line-height: 18px;
+        }
+      }
+    }
+
+    ul li.icon {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 807px) {
+    display: none;
   }
 `;
 
@@ -232,6 +320,36 @@ export const SearchDivStyle = styled.div`
       }
     }
   }
+  @media screen and (max-width: 651px) {
+    display: none;
+  }
+`;
+export const SubNavStyle = styled.div`
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  div {
+    max-width: calc(100% - 0px);
+    min-width: 80%;
+    margin: auto;
+    overflow-x: auto;
+    width: 100%;
+    overscroll-behavior-inline: contain;
+    align-items: center;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  a {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #030303;
+  }
 `;
 
 export const EmptyContainerStyle = styled.div`
@@ -258,6 +376,17 @@ export const EmptyContainerStyle = styled.div`
       transition: 0s;
       background-color: rgba(0, 0, 0, 0.1);
       border: none;
+    }
+  }
+  &.mobile {
+    display: none;
+  }
+  @media screen and (max-width: 600px) {
+    &.mobile {
+      display: flex;
+    }
+    &.hide-mobile {
+      display: none;
     }
   }
 `;
@@ -321,18 +450,20 @@ export const BtnStyle = styled.button`
   padding: 6px;
 `;
 export const HoverStyle = styled.div`
-  transition: all 0.3s;
-  animation-name: reverseScale;
-  animation-duration: 0.4s;
+  &.no-hover {
+    /* transition: all 0.3s;
+    animation-name: reverseScale;
+    animation-duration: 0.4s; */
+  }
   .card-body {
     padding: 0;
-    transition-duration: 0.4s;
-    transition-property: padding;
+    /* transition-duration: 0.4s;
+    transition-property: padding; */
   }
   .footer {
     opacity: 0;
-    transition-duration: 0.4s;
-    transition-property: opacity, margin-bottom;
+    /* transition-duration: 0.4s;
+    transition-property: opacity, margin-bottom; */
     margin-bottom: -30px;
   }
 
@@ -343,6 +474,16 @@ export const HoverStyle = styled.div`
     animation-name: scale;
     animation-timing-function: ease-in-out;
     background-color: white;
+    /* prevents hovering on div beside  */
+    /* &:after {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      height: calc(100% + 00px);
+      width: calc(100% + 70px);
+      top: -20px;
+      left: -37px;
+    } */
     .footer {
       opacity: 1;
       transition-delay: 1s;
@@ -359,7 +500,7 @@ export const HoverStyle = styled.div`
   }
   @keyframes scale {
     from {
-      z-index: auto;
+      z-index: 1000;
       height: 100%;
       width: 100%;
       top: 0;
@@ -403,6 +544,7 @@ export const ImageStyle = styled.img`
   height: auto;
   width: 100%;
   object-fit: cover;
+  background-color: #f9f9f9;
 `;
 
 export const NavFlexStyle = styled.nav`

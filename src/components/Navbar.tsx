@@ -25,9 +25,6 @@ import img from "../assets/images/cosmas.jpeg";
 import { useSideBarStore } from "../helper/stores";
 
 const Navbar = () => {
-  // toggle sidebar state
-  const sideBarToggle = useSideBarStore(({ sideBarAction }) => sideBarAction);
-
   const [btnActive, setBtnActive] = useState<string>("");
   const alignCenter = {
     alignItems: "center",
@@ -35,6 +32,9 @@ const Navbar = () => {
   const btnToggle = (val: string) => {
     btnActive === val ? setBtnActive("") : setBtnActive(val);
   };
+  // toggle sidebar state
+  const sideBarToggle = useSideBarStore(({ sideBarAction }) => sideBarAction);
+
   return (
     <NavFlexStyle>
       <ItemFlexStyle columnGap="16px" rowGap="0" style={alignCenter}>
@@ -52,22 +52,25 @@ const Navbar = () => {
           <ButtonStyle>{micIcon}</ButtonStyle>
         </ItemFlexStyle>
       </SearchDivStyle>
-      <EmptyContainerStyle></EmptyContainerStyle>
+      {/* <EmptyContainerStyle></EmptyContainerStyle> */}
       <ItemFlexStyle columnGap="16px" rowGap="0" style={alignCenter}>
-        <EmptyContainerStyle>
+        <EmptyContainerStyle className="hide-mobile">
           <ButtonStyle onClick={() => btnToggle("video")}>
             {btnActive === "video" ? videoIcon2 : videoIcon1}
           </ButtonStyle>
         </EmptyContainerStyle>
-        <EmptyContainerStyle>
+        <EmptyContainerStyle className="hide-mobile">
           <ButtonStyle onClick={() => btnToggle("apps")}>
             {btnActive === "apps" ? appsIcon2 : appsIcon1}
           </ButtonStyle>
         </EmptyContainerStyle>
-        <EmptyContainerStyle>
+        <EmptyContainerStyle className="hide-mobile">
           <ButtonStyle onClick={() => btnToggle("notif")}>
             {btnActive === "notif" ? notificationIcon2 : notificationIcon1}
           </ButtonStyle>
+        </EmptyContainerStyle>
+        <EmptyContainerStyle className="mobile">
+          <ButtonStyle>{searchIcon}</ButtonStyle>
         </EmptyContainerStyle>
         <ProfileImg
           src={img}

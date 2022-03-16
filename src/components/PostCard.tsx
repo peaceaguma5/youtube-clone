@@ -17,19 +17,29 @@ import { queueIcon, timeIcon } from "../helper/constants";
 
 const PostCard = ({ card }: { card: cardType }) => {
   const [hovered, setHovered] = useState<String>("");
+  const [removeHover, setRemoveHover] = useState<String>("");
 
   const handleMouseEnter = (val: string) => {
+    setRemoveHover("");
+
     setHovered(val);
   };
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (val: string) => {
     setHovered("");
+    setRemoveHover(val);
   };
 
   return (
     <LinkStyle href="#" style={{ position: "relative" }}>
       <HoverStyle
-        className={hovered === card.id.videoId ? "hovered" : ""}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => handleMouseLeave(card.id.videoId)}
+        className={`${
+          hovered === card.id.videoId
+            ? "hovered"
+            : removeHover === card.id.videoId
+            ? "no-hover"
+            : ""
+        }`}
       >
         <div
           style={{ position: "relative" }}
