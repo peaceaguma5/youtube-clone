@@ -94,7 +94,13 @@ const Home: React.FC = () => {
                       "Nothing more to load"
                     )}
                   </EmptyContainerStyle>
-                  {isFetching && !isFetchingNextPage ? <Skeleton /> : null}
+                  {isFetching && !isFetchingNextPage ? (
+                    <EmptyContainerStyle
+                      style={{ gridColumn: "1 / -1", textAlign: "center" }}
+                    >
+                      <Skeleton />{" "}
+                    </EmptyContainerStyle>
+                  ) : null}
                 </>
               )}
             </HomeMain>
