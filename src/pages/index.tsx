@@ -14,8 +14,8 @@ import { useFetchData } from "../helper/stores";
 import { cardType } from "../helper/Typeface";
 import { useInView } from "react-intersection-observer";
 import Spinner from "../components/Spinner";
-import Subnav from "../components/Subnav";
 import MobileSideBar from "../components/SideBar/MobileSideBar";
+import Subnav from "../components/Subnav";
 
 const Home: React.FC = () => {
   const { ref, inView } = useInView();
