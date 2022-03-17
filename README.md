@@ -1,6 +1,6 @@
 # Youtube clone
 
-This is a clone of Youtube landing page with infinite scroll. I was built with [Create React App](https://github.com/facebook/create-react-app), [React Query](https://react-query.tanstack.com/), [Zustand](https://github.com/pmndrs/zustand) and [TypeScript](https://www.typescriptlang.org/).
+This is a clone of Youtube landing page with infinite scroll. It was built with [Create React App](https://github.com/facebook/create-react-app), [React Query](https://react-query.tanstack.com/), [Zustand](https://github.com/pmndrs/zustand) and [TypeScript](https://www.typescriptlang.org/).
 
 ## Available Scripts
 
