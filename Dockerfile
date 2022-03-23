@@ -4,7 +4,7 @@ COPY package.json .
 RUN npm install
 COPY . .
 # ENV REACT_APP_YOUTUBE_API_KEY=
-EXPOSE 3000
+EXPOSE 30000
 RUN npm run build
 
 # FROM nginx
